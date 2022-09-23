@@ -1,5 +1,5 @@
 ### Auth
-I gereated a .json file with my private key and other auth items from google cloud ui. Your should just be able to follow the instructions [here]("https://developers.google.com/workspace/guides/create-credentials#create_credentials_for_a_service_account")
+I gereated a .json file with my private key and other auth items from google cloud ui. Your should just be able to follow the instructions https://developers.google.com/workspace/guides/create-credentials#create_credentials_for_a_service_account
 
 ### Tfvars
 If you are not familiar with this. You will have to create a `var.tfvars` file that will read your variable information. Like the directory of auth file. This file also contains potential sensitive info.
