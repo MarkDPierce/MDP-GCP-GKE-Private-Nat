@@ -13,19 +13,21 @@ resource "google_container_cluster" "primary" {
   initial_node_count = 4
   network            = module.cloud-nat.network.id
   subnetwork         = module.cloud-nat.subnet.id
-  cluster_ipv4_cidr  = "10.0.32.0/20"
 
   private_cluster_config {
     master_ipv4_cidr_block  = "172.16.0.16/28"
     enable_private_endpoint = false
     enable_private_nodes    = true
+    #cluster_ipv4_cidr  = "10.0.32.0/20"
+
     master_global_access_config {
       enabled = false
     }
   }
 
-  /*   ip_allocation_policy {
-  } */
+  ip_allocation_policy {
+    cluster_ipv4_cidr_block  = "10.0.32.0/20"
+  }
 
   master_authorized_networks_config {
     cidr_blocks {
