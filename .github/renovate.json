@@ -4,5 +4,9 @@
   "labels": ["renovate", "BOT"],
   "draftPR": true,
   "reviewersFromCodeOwners": true,
-  "enabledManagers": ["regex", "terraform", "terraform-version"]
+  "enabledManagers": ["regex", "terraform", "terraform-version"],
+  "assignees": ["MarkDPierce"],
+  "vulnerabilityAlerts": {
+    "enabled": true
+  }
 }
