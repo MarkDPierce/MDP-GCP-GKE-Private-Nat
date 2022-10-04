@@ -26,7 +26,7 @@ resource "google_container_cluster" "primary" {
   }
 
   ip_allocation_policy {
-    cluster_ipv4_cidr_block  = "10.0.32.0/20"
+    cluster_ipv4_cidr_block = "10.0.32.0/20"
   }
 
   master_authorized_networks_config {
