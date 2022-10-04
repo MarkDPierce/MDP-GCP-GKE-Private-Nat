@@ -1,0 +1,8 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "semanticCommits": "disabled",
+  "labels": ["renovate", "BOT"],
+  "draftPR": true,
+  "reviewersFromCodeOwners": true,
+  "enabledManagers": ["regex", "terraform", "terraform-version"]
+}
