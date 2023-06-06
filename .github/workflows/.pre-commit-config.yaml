@@ -1,0 +1,10 @@
+repos:
+  - repo: https://github.com/gruntwork-io/pre-commit
+    rev: 0.1.22 # Get the latest from: https://github.com/gruntwork-io/pre-commit/releases
+    hooks:
+      - id: terraform-fmt
+      - id: terraform-validate
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0  # Use the ref you want to point at
+    hooks:
+    -   id: trailing-whitespace
