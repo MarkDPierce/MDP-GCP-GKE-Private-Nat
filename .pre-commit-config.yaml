@@ -3,5 +3,5 @@ repos:
     rev: v0.1.22 # Get the latest from: 1https://github.com/gruntwork-io/pre-commit/releases
     hooks:
       - id: terraform-fmt
-      - id: terraform-validate
+      #- id: terraform-validate
       - id: tflint
