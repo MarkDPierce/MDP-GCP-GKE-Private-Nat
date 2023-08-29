@@ -7,10 +7,11 @@ module "cloud-nat" {
 }
 
 resource "google_container_cluster" "primary" {
-  project            = var.project_id
-  name               = "nat-cluster"
-  location           = var.zone
-  initial_node_count = 4
+  project  = var.project_id
+  name     = "nat-cluster"
+  location = var.zone
+  # Set to 1 so you dont deploy n nodes and forget.
+  initial_node_count = 1
   network            = module.cloud-nat.network.id
   subnetwork         = module.cloud-nat.subnet.id
 
@@ -18,7 +19,9 @@ resource "google_container_cluster" "primary" {
     master_ipv4_cidr_block  = "172.16.0.16/28"
     enable_private_endpoint = false
     enable_private_nodes    = true
-    #cluster_ipv4_cidr  = "10.0.32.0/20"
+
+    # Usually you dont need to modify this.
+    # cluster_ipv4_cidr  = "10.0.32.0/20"
 
     master_global_access_config {
       enabled = false
@@ -57,6 +60,8 @@ resource "google_container_cluster" "primary" {
   }
 }
 
+# A firewall rule to enable SSH
+# For a specific IP
 resource "google_compute_firewall" "rules" {
   project = var.project_id
   name    = "allow-ssh"
@@ -65,5 +70,5 @@ resource "google_compute_firewall" "rules" {
     protocol = "tcp"
     ports    = ["22"]
   }
-  source_ranges = ["35.235.240.0/20"]
+  source_ranges = var.firewall_source_ranges
 }

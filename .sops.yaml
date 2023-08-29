@@ -1,0 +1,3 @@
+creation_rules:
+  # any other secrets, eg api keys
+  - gcp_kms: "projects/mdp-synology/locations/global/keyRings/sops/cryptoKeys/primarykey"
