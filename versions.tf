@@ -14,11 +14,12 @@ terraform {
 }
 
 provider "google" {
-  # For the purpose of these files this is good enough
-  # Generating a Json key is generally not recommended
-  credentials = data.sops_file.creds.raw
+  # If you provide a sops encrypted credential file
+  # That will be used. Otherwise, it will use a non
+  # encrypted version of your creds.json file
+  credentials = var.credentials_file_en != "" ? data.sops_file.creds.raw : var.credentials_file
 }
 
 data "sops_file" "creds" {
-  source_file = "./creds.json"
+  source_file = var.credentials_file_en
 }
